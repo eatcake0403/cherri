@@ -5,6 +5,7 @@ import store from './store'
 import VueI18n from 'vue-i18n'
 import messages from '@/i18n'
 import { searchLocalLang } from '@/i18n/loacalLang.js'
+import vuetify from './plugins/vuetify'
 
 Vue.use(VueI18n)
 
@@ -21,5 +22,6 @@ new Vue({
   router,
   store,
   i18n,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')
