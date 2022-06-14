@@ -1,12 +1,18 @@
 <template>
   <div :class="$style.root">
-    <div :class="$style.msgList"/>
+    <MsgList :class="$style.msgList"/>
     <div :class="$style.Info"/>
     <div :class="$style.main"/>
   </div>
 </template>
 
 <script>
+import MsgList from '@/components/MsgList.vue'
+export default {
+  components: {
+    MsgList
+  }
+}
 </script>
 
 <style lang="scss" module>
@@ -22,11 +28,12 @@
 
 .msgList {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   grid-area: left;
   background: $white;
   box-shadow: 2px 72px 6px 0px rgb(208 207 207 / 63%);
   z-index: 1;
+  overflow-y: auto;
 }
 
 .Info {
