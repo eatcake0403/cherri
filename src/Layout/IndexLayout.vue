@@ -1,16 +1,18 @@
 <template>
   <div :class="$style.root">
     <MsgList :class="$style.msgList"/>
-    <div :class="$style.Info"/>
+    <InfoTop :class="$style.Info"/>
     <div :class="$style.main"/>
   </div>
 </template>
 
 <script>
 import MsgList from '@/components/MsgList.vue'
+import InfoTop from '@/components/InfoTop.vue'
 export default {
   components: {
-    MsgList
+    MsgList,
+    InfoTop
   }
 }
 </script>
@@ -24,6 +26,7 @@ export default {
                         'left main';
   grid-template-columns: 270px 1fr;
   grid-template-rows: 75px 1fr;
+  overflow: auto;
 }
 
 .msgList {
@@ -33,16 +36,14 @@ export default {
   background: $white;
   box-shadow: 2px 72px 6px 0px rgb(208 207 207 / 63%);
   z-index: 1;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .Info {
   width: 100%;
   height: 100%;
   grid-area: top;
-  padding: 0 20px;
-  box-sizing: border-box;
-  background: $primary;
+  overflow: auto;
 }
 
 .main {
@@ -52,5 +53,6 @@ export default {
   box-sizing: border-box;
   grid-area: main;
   background: $white;
+  overflow: auto;
 }
 </style>
