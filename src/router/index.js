@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import IndexLayout from '@/Layout/IndexLayout.vue'
+import ChatView from '@/views/ChatView.vue'
 
 Vue.use(VueRouter)
 
@@ -9,10 +10,11 @@ const routes = [
     path: '/',
     name: 'IndexLayout',
     component: IndexLayout,
+    redirect: 'ChatView',
     children: [{
-      path: 'message/:userID',
-      name: 'IndexLayout',
-      component: IndexLayout,
+      path: 'ChatView',
+      name: 'ChatView',
+      component: ChatView,
       props: (route) => ({
         userID: route.params.route
       })

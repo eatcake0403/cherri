@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.root">
     <MsgList :class="$style.msgList"/>
-    <InfoTop :class="$style.Info"/>
-    <div :class="$style.main"/>
+    <InfoTop :class="$style.infoTop"/>
+    <router-view :class="$style.userInfoToChat"/>
   </div>
 </template>
 
@@ -22,8 +22,8 @@ export default {
 
 .root {
   display: grid;
-  grid-template-areas: 'left top'
-                        'left main';
+  grid-template-areas: 'MsgList infoTop'
+                        'MsgList userInfoToChat';
   grid-template-columns: 270px 1fr;
   grid-template-rows: 75px 1fr;
   overflow: auto;
@@ -32,26 +32,25 @@ export default {
 .msgList {
   width: 100%;
   min-height: 100%;
-  grid-area: left;
+  grid-area: MsgList;
   background: $white;
   box-shadow: 2px 72px 6px 0px rgb(208 207 207 / 63%);
   z-index: 1;
   overflow: auto;
 }
 
-.Info {
+.infoTop {
   width: 100%;
   height: 100%;
-  grid-area: top;
+  grid-area: infoTop;
   overflow: auto;
 }
 
-.main {
+.userInfoToChat {
   width: 100%;
   height: 100%;
-  padding: 24px 20px 24px 20px;
   box-sizing: border-box;
-  grid-area: main;
+  grid-area: userInfoToChat;
   background: $white;
   overflow: auto;
 }
