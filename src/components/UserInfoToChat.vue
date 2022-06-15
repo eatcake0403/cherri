@@ -6,11 +6,40 @@
       >
         <img
           src="https://cdn.vuetifyjs.com/images/john.jpg"
-        >
+        />
       </v-avatar>
       <div :class="$style.username">
         weweQ
       </div>
+    </div>
+    <div :class="$style.btnoutside">
+      <v-btn
+        color="#ccc"
+        elevation="2"
+        icon
+        large
+        outlined
+        retain-focus-on-click
+        :class="$style.btn"
+      >
+        <img
+          src="@/assets/ic_search.png"
+          :class="$style.icon"
+        />
+      </v-btn>
+      <v-btn
+        color="#ccc"
+        elevation="2"
+        icon
+        large
+        outlined
+        retain-focus-on-click
+      >
+        <img
+          src="@/assets/ic_note.png"
+          :class="$style.icon"
+        />
+      </v-btn>
     </div>
   </div>
 </template>
@@ -32,6 +61,19 @@ export default {
   background: $white;
   justify-content: space-between;
   box-shadow: 0px 1px 6px 0px rgb(208 207 207 / 63%);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.btnoutside {
+  display: flex;
+  align-items: center;
+  .btn {
+    margin-right: 10px;
+  }
 }
 
 .userInfo {
