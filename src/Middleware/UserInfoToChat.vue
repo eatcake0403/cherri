@@ -21,6 +21,7 @@
         outlined
         retain-focus-on-click
         :class="$style.btn"
+        @click="$emit('queryEssential')"
       >
         <img
           src="@/assets/ic_search.png"
@@ -34,13 +35,17 @@
         large
         outlined
         retain-focus-on-click
+        @click="MemoCard = !MemoCard"
       >
         <img
           src="@/assets/ic_note.png"
           :class="$style.icon"
         />
       </v-btn>
-      <MemoCard :class="$style.memocard"/>
+      <MemoCard
+        v-if="MemoCard"
+        :class="$style.memocard"
+      />
     </div>
   </div>
 </template>
@@ -50,6 +55,11 @@ import MemoCard from '@/components/MemoCard.vue'
 export default {
   components: {
     MemoCard
+  },
+  data () {
+    return {
+      MemoCard: false
+    }
   }
 }
 </script>

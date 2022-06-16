@@ -22,8 +22,8 @@
       <div :class="$style.recordoutside">
         <div
           :class="$style.record"
-          v-for="(item) in recordMegList"
-          :key="item.time"
+          v-for="(item, i) in recordMegList"
+          :key="i"
         >
           <div :class="$style.time">
             <p>
