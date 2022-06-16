@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import UserInfoToChat from '@/components/UserInfoToChat.vue'
+import UserInfoToChat from '@/Middleware/UserInfoToChat.vue'
 export default {
   components: {
     UserInfoToChat

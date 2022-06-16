@@ -40,13 +40,16 @@
           :class="$style.icon"
         />
       </v-btn>
+      <MemoCard :class="$style.memocard"/>
     </div>
   </div>
 </template>
 
 <script>
+import MemoCard from '@/components/MemoCard.vue'
 export default {
   components: {
+    MemoCard
   }
 }
 </script>
@@ -71,8 +74,15 @@ export default {
 .btnoutside {
   display: flex;
   align-items: center;
+  position: relative;
   .btn {
     margin-right: 10px;
+  }
+
+  .memocard {
+    position: absolute;
+    top: 90px;
+    right: 0px;
   }
 }
 
