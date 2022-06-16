@@ -9,7 +9,8 @@ export default new Vuex.Store({
     userInfo: null,
     msgList: null,
     chatList: null,
-    chatUserInfo: null
+    chatUserInfo: null,
+    essential: null
   },
   mutations: {
     commitUserInfo (state, { data }) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     commitChatList (state, { data, chatUserInfo }) {
       state.chatList = data
       state.chatUserInfo = chatUserInfo
+    },
+    commitEssential (state, { essential }) {
+      state.essential = essential
     }
   },
   actions: {
@@ -36,6 +40,19 @@ export default new Vuex.Store({
       const data = await getChatList(userID)
       const chatUserInfo = store.state.msgList.find(item => item.userID === userID)
       store.commit({ type: 'commitChatList', data, chatUserInfo })
+    }
+  },
+  getters: {
+    chatList: ({ chatList, essential }) => {
+      if (!essential) return chatList
+      return chatList.map(item => {
+        return {
+          ...item,
+          msg: item.msg.replaceAll(essential,
+          `<span style="background: yellow; color: #000;">${essential}</span>`
+          )
+        }
+      })
     }
   }
 })

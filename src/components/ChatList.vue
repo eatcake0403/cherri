@@ -6,17 +6,17 @@
         :key="item.id"
         :class="[$style.defaultstyle, { [$style.ownstyle]: item.own }]"
       >
-        {{ item.msg }}
+        <p v-html="item.msg"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapState(['chatList'])
+    ...mapGetters(['chatList'])
   }
 }
 </script>

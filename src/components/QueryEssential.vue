@@ -1,9 +1,14 @@
 <template>
   <div :class="$style.root">
-    <input :class="$style.inputMsg"/>
+    <input
+      :class="$style.inputMsg"
+      @keyup.enter="submit"
+      v-model="essential"
+    />
     <div
       :class="$style.msg"
-      v-text="`${2}` + $t('Items')"
+      v-text="`${items}` + $t('Items')"
+      v-show="items"
     />
     <img
       src="@/assets/ic_close.png"
@@ -15,6 +20,17 @@
 
 <script>
 export default {
+  data () {
+    return {
+      essential: '',
+      items: null
+    }
+  },
+  methods: {
+    submit () {
+      this.$store.commit({ type: 'commitEssential', essential: this.essential })
+    }
+  }
 }
 </script>
 
