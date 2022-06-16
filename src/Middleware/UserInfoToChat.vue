@@ -1,15 +1,15 @@
 <template>
-  <div :class="$style.root">
+  <div :class="$style.root" v-if="chatUserInfo">
     <div :class="$style.userInfo">
       <v-avatar
         size="53"
       >
         <img
-          src="https://cdn.vuetifyjs.com/images/john.jpg"
+          :src="chatUserInfo.img"
         />
       </v-avatar>
       <div :class="$style.username">
-        weweQ
+        {{  chatUserInfo.name }}
       </div>
     </div>
     <div :class="$style.btnoutside">
@@ -52,6 +52,7 @@
 
 <script>
 import MemoCard from '@/components/MemoCard.vue'
+import { mapState } from 'vuex'
 export default {
   components: {
     MemoCard
@@ -60,6 +61,11 @@ export default {
     return {
       MemoCard: false
     }
+  },
+  computed: {
+    ...mapState([
+      'chatUserInfo'
+    ])
   }
 }
 </script>

@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     userInfo: null,
     msgList: null,
-    chatList: null
+    chatList: null,
+    chatUserInfo: null
   },
   mutations: {
     commitUserInfo (state, { data }) {
@@ -17,8 +18,9 @@ export default new Vuex.Store({
     commitMsgList (state, { data }) {
       state.msgList = data
     },
-    commitChatList (state, { data }) {
+    commitChatList (state, { data, chatUserInfo }) {
       state.chatList = data
+      state.chatUserInfo = chatUserInfo
     }
   },
   actions: {
@@ -26,14 +28,14 @@ export default new Vuex.Store({
       const data = await getUserInfo()
       store.commit({ type: 'commitUserInfo', data })
     },
-    async getMsgList (store) {
+    async getMsgList (store, { userID }) {
       const data = await getMsgList()
       store.commit({ type: 'commitMsgList', data })
     },
     async getChatList (store, { userID }) {
-      console.log(userID)
       const data = await getChatList(userID)
-      store.commit({ type: 'commitChatList', data })
+      const chatUserInfo = store.state.msgList.find(item => item.userID === userID)
+      store.commit({ type: 'commitChatList', data, chatUserInfo })
     }
   }
 })

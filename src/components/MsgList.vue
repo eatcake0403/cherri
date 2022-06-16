@@ -38,8 +38,11 @@ export default {
     }
   },
   watch: {
-    async $route () {
-      await this.$store.dispatch({ type: 'getChatList', userID: this.userID })
+    $route: {
+      immediate: true,
+      async handler () {
+        await this.$store.dispatch({ type: 'getChatList', userID: this.userID })
+      }
     }
   },
   methods: {
