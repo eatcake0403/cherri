@@ -38,7 +38,7 @@ export default {
 @import 'src/SCSS/main.scss';
 .root {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   padding: 20px;
   overflow-y: auto;
 }
@@ -59,7 +59,7 @@ export default {
   padding: 10px 15px;
   color: $white;
   box-sizing: border-box;
-  justify-self: flex-start;
+  justify-self: start;
 }
 
 .ownstyle {
