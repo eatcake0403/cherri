@@ -9,7 +9,7 @@
       :class="$style.queryessential"
       @queryEssential="queryEssential = !queryEssential"
     />
-    <div :class="$style.dialog"/>
+    <ChatList :class="$style.dialog"/>
     <SendMsg :class="$style.sendmsg"/>
   </div>
 </template>
@@ -18,11 +18,13 @@
 import UserInfoToChat from '@/Middleware/UserInfoToChat.vue'
 import QueryEssential from '@/components/QueryEssential.vue'
 import SendMsg from '@/components/SendMsg.vue'
+import ChatList from '@/components/ChatList.vue'
 export default {
   components: {
     UserInfoToChat,
     QueryEssential,
-    SendMsg
+    SendMsg,
+    ChatList
   },
   data () {
     return {
