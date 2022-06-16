@@ -14,6 +14,10 @@ const routes = [
     children: [{
       path: 'ChatView',
       name: 'ChatView',
+      component: ChatView
+    }, {
+      path: 'ChatView/:userID',
+      name: 'ChatViewUserID',
       component: ChatView,
       props: (route) => ({
         userID: route.params.route
