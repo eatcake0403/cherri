@@ -2,28 +2,41 @@
   <div :class="$style.root">
     <div
       :class="$style.msgnum"
-      v-text="$t('FriendsList', { msgNum: 2 })"
+      v-text="$t('FriendsList', { msgNum: msgList.length })"
     />
     <div
       :class="$style.msgcard"
+      v-for="item in msgList"
+      :key="item.userID"
     >
       <v-avatar
         :class="$style.userimg"
         size="53"
       >
         <img
-          src="https://cdn.vuetifyjs.com/images/john.jpg"
+          :src="item.img"
         >
       </v-avatar>
       <div :class="$style.username">
-        weweQ
+        {{ item.name }}
       </div>
       <div :class="$style.usermsg">
-        你好哇
+        {{ item.lastMsg }}
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState([
+      'msgList'
+    ])
+  }
+}
+</script>
 
 <style lang="scss" module>
 @import 'src/SCSS/main.scss';

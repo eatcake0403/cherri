@@ -32,32 +32,29 @@
         size="53"
       >
         <img
-          :src="userData.img"
+          :src="userInfo.img"
         >
       </v-avatar>
       <p :class="$style.name">
-        {{ userData.name }}
+        {{ userInfo.name }}
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import { getUserInfo } from '@/service/index.js'
+import { mapState } from 'vuex'
 export default {
-  data () {
-    return {
-      userData: null
-    }
+  computed: {
+    ...mapState([
+      'userInfo'
+    ])
   },
   methods: {
     changeLang (lang) {
       this.$i18n.locale = lang
       window.localStorage.setItem('lang', lang)
     }
-  },
-  async created () {
-    this.userData = await getUserInfo()
   }
 }
 </script>
