@@ -6,6 +6,21 @@ import VueI18n from 'vue-i18n'
 import messages from '@/i18n'
 import { searchLocalLang } from '@/i18n/loacalLang.js'
 import vuetify from './plugins/vuetify'
+import { makeServer } from '../mockAPI/server.js'
+
+// mock API
+makeServer()
+
+// fetch middleware
+const origFetch = window.fetch
+window.fetch = async (...args) => {
+  try {
+    return await origFetch(...args)
+  } catch (err) {
+    window.alert(err.message)
+    throw err
+  }
+}
 
 Vue.use(VueI18n)
 

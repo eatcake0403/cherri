@@ -27,7 +27,7 @@ export default {
       }, {
         own: false, id: 5, msg: '121232131233'
       }, {
-        own: true, id: 6, msg: '121231232132133'
+        own: true, id: 6, msg: '我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234'
       }]
     }
   }
@@ -54,12 +54,14 @@ export default {
 .defaultstyle {
   display: flex;
   align-items: center;
-  border-radius: 999rem;
+  border-radius: 21px;
   background: $primary;
   padding: 10px 15px;
   color: $white;
   box-sizing: border-box;
   justify-self: start;
+  max-width: 40%;
+  line-height: 23px;
 }
 
 .ownstyle {

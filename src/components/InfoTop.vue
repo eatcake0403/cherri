@@ -32,11 +32,11 @@
         size="53"
       >
         <img
-          src="https://cdn.vuetifyjs.com/images/john.jpg"
+          :src="userData.img"
         >
       </v-avatar>
       <p :class="$style.name">
-        潔西卡潔西卡潔西卡潔西卡
+        {{ userData.name }}
       </p>
     </div>
   </div>
@@ -44,11 +44,19 @@
 
 <script>
 export default {
+  data () {
+    return {
+      userData: null
+    }
+  },
   methods: {
     changeLang (lang) {
       this.$i18n.locale = lang
       window.localStorage.setItem('lang', lang)
     }
+  },
+  async created () {
+    this.userData = (await fetch('/api/userInfo', { method: 'GET' })).json()
   }
 }
 </script>
