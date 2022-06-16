@@ -29,7 +29,7 @@ export function makeServer () {
         }]
       ))
 
-      this.get('/api/chatMsg/:userID', (schema, request) => {
+      this.get('/api/chatList/:userID', (schema, request) => {
         const id = request.params.userID
         switch (id) {
           case '6666garbled':

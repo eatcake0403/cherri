@@ -11,6 +11,9 @@ const routes = [
     name: 'IndexLayout',
     component: IndexLayout,
     redirect: 'ChatView',
+    props: (route) => ({
+      userID: route.params.userID
+    }),
     children: [{
       path: 'ChatView',
       name: 'ChatView',
@@ -18,10 +21,7 @@ const routes = [
     }, {
       path: 'ChatView/:userID',
       name: 'ChatViewUserID',
-      component: ChatView,
-      props: (route) => ({
-        userID: route.params.route
-      })
+      component: ChatView
     }]
   }
 ]

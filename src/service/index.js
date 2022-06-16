@@ -9,7 +9,7 @@ export async function getMsgList () {
 }
 
 export async function getChatList (userID) {
-  const reqUrl = `/api/msgList/${userID}`
+  const reqUrl = `/api/chatList/${userID}`
   const response = await fetch(reqUrl, { method: 'GET' })
   return await response.json()
 }

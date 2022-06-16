@@ -1,8 +1,14 @@
 <template>
   <div :class="$style.root">
-    <MsgList :class="$style.msgList"/>
+    <MsgList
+      :class="$style.msgList"
+      :userID="userID"
+    />
     <InfoTop :class="$style.infoTop"/>
-    <router-view :class="$style.userInfoToChat"/>
+    <router-view
+      :class="$style.userInfoToChat"
+      :userID="userID"
+    />
   </div>
 </template>
 
@@ -10,6 +16,13 @@
 import MsgList from '@/components/MsgList.vue'
 import InfoTop from '@/components/InfoTop.vue'
 export default {
+  // router
+  props: {
+    userID: {
+      type: String,
+      default: null
+    }
+  },
   components: {
     MsgList,
     InfoTop

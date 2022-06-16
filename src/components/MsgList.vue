@@ -5,9 +5,10 @@
       v-text="$t('FriendsList', { msgNum: msgList.length })"
     />
     <div
-      :class="$style.msgcard"
       v-for="item in msgList"
       :key="item.userID"
+      :class="[$style.msgcard, { [$style.active]: item.userID === userID }]"
+      @click="userIDFn(item.userID)"
     >
       <v-avatar
         :class="$style.userimg"
@@ -30,6 +31,23 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  props: {
+    userID: {
+      type: String,
+      default: null
+    }
+  },
+  watch: {
+    async $route () {
+      await this.$store.dispatch({ type: 'getChatList', userID: this.userID })
+    }
+  },
+  methods: {
+    async userIDFn (userID) {
+      if (this.userID === userID) return
+      this.$router.push({ name: 'ChatViewUserID', params: { userID } })
+    }
+  },
   computed: {
     ...mapState([
       'msgList'
@@ -60,6 +78,11 @@ export default {
                         'userimg usermsg';
   grid-template-columns: 80px 1fr;
   grid-template-rows: 1fr 1fr;
+  cursor: pointer;
+
+  &.active {
+    background: $active;
+  }
 }
 
 .userimg {

@@ -31,6 +31,7 @@ export default new Vuex.Store({
       store.commit({ type: 'commitMsgList', data })
     },
     async getChatList (store, { userID }) {
+      console.log(userID)
       const data = await getChatList(userID)
       store.commit({ type: 'commitChatList', data })
     }

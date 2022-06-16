@@ -2,7 +2,7 @@
   <div :class="$style.root">
     <div :class="$style.outside">
       <div
-        v-for="item in msgList"
+        v-for="item in chatList"
         :key="item.id"
         :class="[$style.defaultstyle, { [$style.ownstyle]: item.own }]"
       >
@@ -13,23 +13,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  data () {
-    return {
-      msgList: [{
-        own: true, id: 1, msg: '123'
-      }, {
-        own: true, id: 2, msg: '222'
-      }, {
-        own: true, id: 3, msg: '12333'
-      }, {
-        own: true, id: 4, msg: '121231233'
-      }, {
-        own: false, id: 5, msg: '121232131233'
-      }, {
-        own: true, id: 6, msg: '我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234我我哈哈1234'
-      }]
-    }
+  computed: {
+    ...mapState(['chatList'])
   }
 }
 </script>
