@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { getUserInfo } from '@/service/index.js'
 export default {
   data () {
     return {
@@ -56,7 +57,7 @@ export default {
     }
   },
   async created () {
-    this.userData = (await fetch('/api/userInfo', { method: 'GET' })).json()
+    this.userData = await getUserInfo()
   }
 }
 </script>
