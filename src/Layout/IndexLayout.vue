@@ -26,32 +26,22 @@ export default {
                         'MsgList userInfoToChat';
   grid-template-columns: 270px 1fr;
   grid-template-rows: 75px 1fr;
-  overflow: auto;
 }
 
 .msgList {
-  width: 100%;
-  min-height: 100%;
   grid-area: MsgList;
   background: $white;
   box-shadow: 2px 72px 6px 0px rgb(208 207 207 / 63%);
   z-index: 1;
-  overflow: auto;
 }
 
 .infoTop {
-  width: 100%;
-  height: 100%;
   grid-area: infoTop;
-  overflow: auto;
 }
 
 .userInfoToChat {
-  width: 100%;
-  height: 100%;
   box-sizing: border-box;
   grid-area: userInfoToChat;
   background: $white;
-  overflow: auto;
 }
 </style>

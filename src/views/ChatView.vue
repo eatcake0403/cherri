@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style.root">
     <UserInfoToChat
       :class="$style.userinfotochat"
       @queryEssential="queryEssential = !queryEssential"
@@ -9,16 +9,20 @@
       :class="$style.queryessential"
       @queryEssential="queryEssential = !queryEssential"
     />
+    <div :class="$style.dialog"/>
+    <SendMsg :class="$style.sendmsg"/>
   </div>
 </template>
 
 <script>
 import UserInfoToChat from '@/Middleware/UserInfoToChat.vue'
 import QueryEssential from '@/components/QueryEssential.vue'
+import SendMsg from '@/components/SendMsg.vue'
 export default {
   components: {
     UserInfoToChat,
-    QueryEssential
+    QueryEssential,
+    SendMsg
   },
   data () {
     return {
@@ -31,12 +35,24 @@ export default {
 <style lang="scss" module>
 @import 'src/SCSS/main.scss';
 
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
 .userinfotochat {
   height: 70px;
 }
 
 .queryessential {
   height: 70px;
-  border-bottom: 1px solid $line;
+}
+
+.dialog {
+  flex: 1;
+}
+
+.sendmsg {
+  height: 70px;
 }
 </style>

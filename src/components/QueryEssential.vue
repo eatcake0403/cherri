@@ -22,7 +22,7 @@ export default {
 @import 'src/SCSS/main.scss';
 
 .root {
-  border-bottom: 1 px solit $line;
+  border-bottom: 1px solid $line;
   display: flex;
   align-items: center;
   padding: 0 20px;
