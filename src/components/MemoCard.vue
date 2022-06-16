@@ -9,37 +9,59 @@
       <textarea
         :class="$style.textarea"
         :placeholder="$t('Message')"
+        v-model="recordMsg"
       />
       <v-btn
         block
         color="#4A90E2"
         dark
+        @click="addRecordMsg"
       >
         {{ $t('Add') }}
       </v-btn>
       <div :class="$style.recordoutside">
-        <div :class="$style.record">
+        <div
+          :class="$style.record"
+          v-for="(item) in recordMegList"
+          :key="item.time"
+        >
           <div :class="$style.time">
-            <p>2022/20/02 22:22:22</p>
+            <p>
+              {{ item.time }}
+            </p>
             <img
               src="@/assets/ic_close2.png"
               :class="$style.close"
+              @click="deleteRecordMsg(item.time)"
             >
           </div>
-        </div>
-        <div :class="$style.record">
-          <div :class="$style.time">
-            <p>2022/20/02 22:22:22</p>
-            <img
-              src="@/assets/ic_close2.png"
-              :class="$style.close"
-            >
-          </div>
+          {{ item.recordMsg }}
         </div>
       </div>
     </v-card>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      recordMsg: '',
+      recordMegList: []
+    }
+  },
+  methods: {
+    addRecordMsg () {
+      const time = new Date()
+      this.recordMegList.push({ time, recordMsg: this.recordMsg })
+      this.recordMsg = ''
+    },
+    deleteRecordMsg (time) {
+      this.recordMegList = this.recordMegList.filter(item => item.time !== time)
+    }
+  }
+}
+</script>
 
 <style lang="scss" module>
 @import 'src/SCSS/main.scss';
