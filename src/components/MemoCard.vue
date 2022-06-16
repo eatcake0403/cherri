@@ -17,6 +17,26 @@
       >
         {{ $t('Add') }}
       </v-btn>
+      <div :class="$style.recordoutside">
+        <div :class="$style.record">
+          <div :class="$style.time">
+            <p>2022/20/02 22:22:22</p>
+            <img
+              src="@/assets/ic_close2.png"
+              :class="$style.close"
+            >
+          </div>
+        </div>
+        <div :class="$style.record">
+          <div :class="$style.time">
+            <p>2022/20/02 22:22:22</p>
+            <img
+              src="@/assets/ic_close2.png"
+              :class="$style.close"
+            >
+          </div>
+        </div>
+      </div>
     </v-card>
   </div>
 </template>
@@ -61,5 +81,35 @@
   z-index: 1;
   padding: 30px;
   box-sizing: border-box;
+}
+
+.recordoutside {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid $line;
+  display: grid;
+  grid-row-gap: 15px;
+
+  .record {
+    position: relative;
+    border: 1px solid $line;
+    min-height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    .time {
+      color: $primary;
+      font-size: 16px;
+    }
+
+    .close {
+      position: absolute;
+      right: 7px;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      cursor: pointer;
+    }
+  }
 }
 </style>
