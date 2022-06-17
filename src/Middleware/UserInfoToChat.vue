@@ -62,6 +62,11 @@ export default {
       MemoCard: false
     }
   },
+  watch: {
+    $route () {
+      this.MemoCard = false
+    }
+  },
   computed: {
     ...mapState([
       'chatUserInfo'

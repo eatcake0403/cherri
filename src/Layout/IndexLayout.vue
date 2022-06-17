@@ -2,12 +2,10 @@
   <div :class="$style.root">
     <MsgList
       :class="$style.msgList"
-      :userID="userID"
     />
     <InfoTop :class="$style.infoTop"/>
     <router-view
       :class="$style.userInfoToChat"
-      :userID="userID"
     />
   </div>
 </template>
@@ -21,6 +19,15 @@ export default {
     userID: {
       type: String,
       default: null
+    }
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      async handler () {
+        this.$store.commit({ type: 'commitUserID', userID: this.userID })
+        await this.$store.dispatch({ type: 'getChatList', userID: this.userID })
+      }
     }
   },
   components: {

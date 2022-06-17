@@ -10,7 +10,8 @@ export default new Vuex.Store({
     msgList: null,
     chatList: null,
     chatUserInfo: null,
-    essential: null
+    essential: null,
+    userID: null
   },
   mutations: {
     commitUserInfo (state, { data }) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
     commitEssential (state, { essential }) {
       state.essential = essential
+    },
+    commitUserID (state, { userID }) {
+      state.userID = userID
     }
   },
   actions: {

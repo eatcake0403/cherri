@@ -22,7 +22,7 @@
       <div :class="$style.recordoutside">
         <div
           :class="$style.record"
-          v-for="(item, i) in recordMegList"
+          v-for="(item, i) in recordMsgList"
           :key="i"
         >
           <div :class="$style.time">
@@ -43,22 +43,41 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
       recordMsg: '',
-      recordMegList: []
+      recordMsgList: []
     }
+  },
+  computed: {
+    ...mapState([
+      'chatUserInfo'
+    ])
   },
   methods: {
     addRecordMsg () {
       const time = new Date()
-      this.recordMegList.push({ time, recordMsg: this.recordMsg })
+      this.recordMsgList.push({ time, recordMsg: this.recordMsg })
       this.recordMsg = ''
+      window.localStorage.setItem(
+        this.chatUserInfo.userID,
+        JSON.stringify(this.recordMsgList)
+      )
     },
     deleteRecordMsg (time) {
-      this.recordMegList = this.recordMegList.filter(item => item.time !== time)
+      this.recordMsgList = this.recordMsgList.filter(item => item.time !== time)
+      window.localStorage.setItem(
+        this.chatUserInfo.userID,
+        JSON.stringify(this.recordMsgList)
+      )
     }
+  },
+  created () {
+    const msgList = JSON.parse(window.localStorage.getItem(this.chatUserInfo.userID))
+    if (!msgList) return
+    this.recordMsgList = msgList
   }
 }
 </script>
@@ -111,6 +130,8 @@ export default {
   border-top: 1px solid $line;
   display: grid;
   grid-row-gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
 
   .record {
     position: relative;

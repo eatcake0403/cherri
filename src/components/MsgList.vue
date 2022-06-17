@@ -31,30 +31,17 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  props: {
-    userID: {
-      type: String,
-      default: null
-    }
-  },
-  watch: {
-    $route: {
-      immediate: true,
-      async handler () {
-        await this.$store.dispatch({ type: 'getChatList', userID: this.userID })
-      }
-    }
+  computed: {
+    ...mapState([
+      'msgList',
+      'userID'
+    ])
   },
   methods: {
-    async userIDFn (userID) {
+    userIDFn (userID) {
       if (this.userID === userID) return
       this.$router.push({ name: 'ChatViewUserID', params: { userID } })
     }
-  },
-  computed: {
-    ...mapState([
-      'msgList'
-    ])
   }
 }
 </script>

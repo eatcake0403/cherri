@@ -33,13 +33,8 @@ import UserInfoToChat from '@/Middleware/UserInfoToChat.vue'
 import QueryEssential from '@/components/QueryEssential.vue'
 import SendMsg from '@/components/SendMsg.vue'
 import ChatList from '@/components/ChatList.vue'
+import { mapState } from 'vuex'
 export default {
-  props: {
-    userID: {
-      type: String,
-      default: null
-    }
-  },
   components: {
     UserInfoToChat,
     QueryEssential,
@@ -50,6 +45,9 @@ export default {
     return {
       queryEssential: false
     }
+  },
+  computed: {
+    ...mapState(['userID'])
   }
 }
 </script>
