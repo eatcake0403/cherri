@@ -8,7 +8,7 @@
     <div
       :class="$style.msg"
       v-text="`${chatList.nums}` + $t('Items')"
-      v-show="Boolean(String(chatList.nums))"
+      v-show="typeof(chatList.nums) === 'number'"
     />
     <img
       src="@/assets/ic_close.png"
