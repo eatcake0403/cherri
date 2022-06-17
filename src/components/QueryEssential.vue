@@ -7,28 +7,35 @@
     />
     <div
       :class="$style.msg"
-      v-text="`${items}` + $t('Items')"
-      v-show="items"
+      v-text="`${chatList.nums}` + $t('Items')"
+      v-show="Boolean(String(chatList.nums))"
     />
     <img
       src="@/assets/ic_close.png"
       :class="$style.close"
-      @click="$emit('queryEssential')"
+      @click="closeFn"
     />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      essential: '',
-      items: null
+      essential: ''
     }
+  },
+  computed: {
+    ...mapGetters(['chatList'])
   },
   methods: {
     submit () {
       this.$store.commit({ type: 'commitEssential', essential: this.essential })
+    },
+    closeFn () {
+      this.$store.commit({ type: 'commitEssential', essential: null })
+      this.$emit('queryEssential')
     }
   }
 }

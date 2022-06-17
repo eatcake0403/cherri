@@ -2,7 +2,7 @@
   <div :class="$style.root">
     <div :class="$style.outside">
       <div
-        v-for="item in chatList"
+        v-for="item in chatList.chatList"
         :key="item.id"
         :class="[$style.defaultstyle, { [$style.ownstyle]: item.own }]"
       >

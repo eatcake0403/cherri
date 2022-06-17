@@ -48,8 +48,12 @@ export default new Vuex.Store({
   },
   getters: {
     chatList: ({ chatList, essential }) => {
-      if (!essential) return chatList
-      return chatList.map(item => {
+      if (!essential) return { nums: null, chatList }
+      let nums = 0
+      const data = chatList.map(item => {
+        if (item.msg.includes(essential)) {
+          nums = nums + 1
+        }
         return {
           ...item,
           msg: item.msg.replaceAll(essential,
@@ -57,6 +61,7 @@ export default new Vuex.Store({
           )
         }
       })
+      return { nums, chatList: data }
     }
   }
 })
