@@ -26,7 +26,12 @@ export default {
       immediate: true,
       async handler () {
         this.$store.commit({ type: 'commitUserID', userID: this.userID })
-        await this.$store.dispatch({ type: 'getChatList', userID: this.userID })
+        this.$store.commit({ type: 'commitMask', loading: true })
+        try {
+          await this.$store.dispatch({ type: 'getChatList', userID: this.userID })
+        } finally {
+          this.$store.commit({ type: 'commitMask', loading: false })
+        }
       }
     }
   },

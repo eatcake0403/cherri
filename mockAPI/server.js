@@ -48,7 +48,7 @@ export function makeServer () {
             return [{
               msg: '傑克', id: 1, own: true
             }, {
-              msg: '你好, 我是潔西卡', id: 2, own: false
+              msg: '你好, 我是潔西卡', id: 2, own: true
             }, {
               msg: '我喜歡做的運動為', id: 3, own: true
             }, {
@@ -60,7 +60,7 @@ export function makeServer () {
             return [{
               msg: '傑森', id: 1, own: true
             }, {
-              msg: '你好,  我是潔西卡', id: 2, own: false
+              msg: '你好,  我是潔西卡', id: 2, own: true
             }, {
               msg: '我喜歡的動物為', id: 3, own: true
             }, {

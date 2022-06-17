@@ -11,7 +11,8 @@ export default new Vuex.Store({
     chatList: null,
     chatUserInfo: null,
     essential: null,
-    userID: null
+    userID: null,
+    loading: false
   },
   mutations: {
     commitUserInfo (state, { data }) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     commitUserID (state, { userID }) {
       state.userID = userID
+    },
+    commitMask (state, { loading }) {
+      state.loading = loading
     }
   },
   actions: {
