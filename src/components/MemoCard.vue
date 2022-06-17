@@ -26,13 +26,13 @@
           :key="i"
         >
           <div :class="$style.time">
-            <p>
+            <p :class="$style.timeText">
               {{ item.time }}
             </p>
             <img
               src="@/assets/ic_close2.png"
               :class="$style.close"
-              @click="deleteRecordMsg(item.time)"
+              @click="deleteRecordMsg(i)"
             >
           </div>
           {{ item.recordMsg }}
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { format } from 'date-fns'
 import { mapState } from 'vuex'
 export default {
   data () {
@@ -58,16 +59,18 @@ export default {
   },
   methods: {
     addRecordMsg () {
-      const time = new Date()
-      this.recordMsgList.push({ time, recordMsg: this.recordMsg })
+      this.recordMsgList.push({
+        time: format(new Date(), 'yyyy-MM-dd HH:mm'),
+        recordMsg: this.recordMsg
+      })
       this.recordMsg = ''
       window.localStorage.setItem(
         this.chatUserInfo.userID,
         JSON.stringify(this.recordMsgList)
       )
     },
-    deleteRecordMsg (time) {
-      this.recordMsgList = this.recordMsgList.filter(item => item.time !== time)
+    deleteRecordMsg (i) {
+      this.recordMsgList = this.recordMsgList.filter((item, idx) => idx !== i)
       window.localStorage.setItem(
         this.chatUserInfo.userID,
         JSON.stringify(this.recordMsgList)
@@ -132,6 +135,7 @@ export default {
   grid-row-gap: 15px;
   max-height: 400px;
   overflow-y: auto;
+  word-break: break-all;
 
   .record {
     position: relative;
@@ -139,10 +143,15 @@ export default {
     min-height: 100px;
     padding: 10px;
     box-sizing: border-box;
+    line-height: 22px;
 
     .time {
       color: $primary;
       font-size: 16px;
+
+      .timeText {
+        margin-bottom: 10px;
+      }
     }
 
     .close {
