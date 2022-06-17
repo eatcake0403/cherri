@@ -9,7 +9,7 @@
         :class="$style.defaultImg"
       />
       <p :class="$style.text">
-        {{ $t('startUsing') }}Cherri Chat
+        {{ $t('startUsing') }}Cherri Chat!
       </p>
     </div>
     <template v-else>

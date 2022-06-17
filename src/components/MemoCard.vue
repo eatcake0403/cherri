@@ -62,7 +62,7 @@ export default {
     addRecordMsg () {
       if (!this.recordMsg) return
       this.recordMsgList.push({
-        time: format(new Date(), 'yyyy-MM-dd HH:mm'),
+        time: format(new Date(), 'yyyy/MM/dd HH:mm'),
         recordMsg: this.recordMsg
       })
       this.recordMsg = ''
