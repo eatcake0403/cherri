@@ -13,7 +13,7 @@
     <img
       src="@/assets/ic_close.png"
       :class="$style.close"
-      @click="closeFn"
+      @click="$emit('queryEssential')"
     />
   </div>
 </template>
@@ -32,10 +32,6 @@ export default {
   methods: {
     submit () {
       this.$store.commit({ type: 'commitEssential', essential: this.essential })
-    },
-    closeFn () {
-      this.$store.commit({ type: 'commitEssential', essential: null })
-      this.$emit('queryEssential')
     }
   }
 }

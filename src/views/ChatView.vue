@@ -15,12 +15,12 @@
     <template v-else>
       <UserInfoToChat
         :class="$style.userinfotochat"
-        @queryEssential="queryEssential = !queryEssential"
+        @queryEssential="closeFn"
       />
       <QueryEssential
         v-if="queryEssential"
         :class="$style.queryessential"
-        @queryEssential="queryEssential = !queryEssential"
+        @queryEssential="closeFn"
       />
       <ChatList :class="$style.dialog"/>
       <SendMsg :class="$style.sendmsg"/>
@@ -48,6 +48,14 @@ export default {
   },
   computed: {
     ...mapState(['userID'])
+  },
+  methods: {
+    closeFn () {
+      if (this.queryEssential) {
+        this.$store.commit({ type: 'commitEssential', essential: null })
+      }
+      this.queryEssential = !this.queryEssential
+    }
   }
 }
 </script>
