@@ -46,6 +46,12 @@ export default {
       queryEssential: false
     }
   },
+  watch: {
+    $route () {
+      this.$store.commit({ type: 'commitEssential', essential: null })
+      this.queryEssential = false
+    }
+  },
   computed: {
     ...mapState(['userID'])
   },
