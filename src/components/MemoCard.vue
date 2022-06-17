@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.root">
+  <div :class="$style.root" @click.stop>
     <v-card
       elevation="4"
       width="330"
@@ -12,9 +12,10 @@
         v-model="recordMsg"
       />
       <v-btn
+        style="color: #fff;"
         block
-        color="#4A90E2"
-        dark
+        color="#9aaec4"
+        :disabled="!recordMsg"
         @click="addRecordMsg"
       >
         {{ $t('Add') }}
@@ -59,6 +60,7 @@ export default {
   },
   methods: {
     addRecordMsg () {
+      if (!this.recordMsg) return
       this.recordMsgList.push({
         time: format(new Date(), 'yyyy-MM-dd HH:mm'),
         recordMsg: this.recordMsg
@@ -128,9 +130,9 @@ export default {
 }
 
 .recordoutside {
-  margin-top: 30px;
-  padding-top: 30px;
-  border-top: 1px solid $line;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid $primary;
   display: grid;
   grid-row-gap: 15px;
   max-height: 400px;
@@ -139,11 +141,12 @@ export default {
 
   .record {
     position: relative;
-    border: 1px solid $line;
+    border: 1px solid $primary;
     min-height: 100px;
     padding: 10px;
     box-sizing: border-box;
     line-height: 22px;
+    border-radius: 4px;
 
     .time {
       color: $primary;

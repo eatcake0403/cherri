@@ -14,7 +14,7 @@
     </div>
     <div :class="$style.btnoutside">
       <v-btn
-        color="#ccc"
+        color="#9aaec4"
         elevation="2"
         icon
         large
@@ -29,13 +29,13 @@
         />
       </v-btn>
       <v-btn
-        color="#ccc"
+        color="#9aaec4"
         elevation="2"
         icon
         large
         outlined
         retain-focus-on-click
-        @click="MemoCard = !MemoCard"
+        @click.stop="MemoCard = !MemoCard"
       >
         <img
           src="@/assets/ic_note.png"
@@ -71,6 +71,14 @@ export default {
     ...mapState([
       'chatUserInfo'
     ])
+  },
+  created () {
+    this.$bus.$on('memoCard:close', () => {
+      this.MemoCard = false
+    })
+  },
+  beforeDestroy () {
+    this.$bus.$off('memoCard:close')
   }
 }
 </script>

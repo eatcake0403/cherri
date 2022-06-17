@@ -24,7 +24,7 @@ export default {
 }
 
 .spin {
-  background: linear-gradient(90deg , #4A90E2, #96d3ff, #4A90E2);
+  background: linear-gradient(90deg , #d3e8ff, #556679, #dcecff);
   width: 0%;
   height: 7px;
   animation: loading .8s ease infinite;

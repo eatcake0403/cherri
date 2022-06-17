@@ -3,5 +3,5 @@ export default {
   Items: 'items',
   Message: 'Message',
   Add: 'Add',
-  startUsing: 'Start Using'
+  startUsing: 'Start Using '
 }

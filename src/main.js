@@ -8,6 +8,8 @@ import { searchLocalLang } from '@/i18n/loacalLang.js'
 import vuetify from './plugins/vuetify'
 import { makeServer } from '../mockAPI/server.js'
 
+Vue.prototype.$bus = new Vue()
+
 // mock API
 makeServer()
 

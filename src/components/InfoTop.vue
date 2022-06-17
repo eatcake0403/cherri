@@ -9,8 +9,9 @@
           color="#fff"
           rounded
           small
-          :class="$style.font"
+          :class="[$style.btn, { [$style.font]: $i18n.locale === 'tw' }]"
           depressed
+          :outlined="$i18n.locale !== 'tw'"
           @click="changeLang('tw')"
         >
           中文
@@ -19,7 +20,9 @@
           color="#fff"
           rounded
           small
-          outlined
+          :class="{ [$style.font]: $i18n.locale === 'en' }"
+          :outlined="$i18n.locale !== 'en'"
+          depressed
           @click="changeLang('en')"
         >
           English
@@ -53,6 +56,7 @@ export default {
   methods: {
     changeLang (lang) {
       this.$i18n.locale = lang
+      this.lang = lang
       window.localStorage.setItem('lang', lang)
     }
   }
@@ -92,8 +96,11 @@ export default {
 .font {
   &:global(.theme--light.v-btn) {
     color: $primary;
-    margin-right: 10px;
   }
+}
+
+.btn {
+  margin-right: 10px;
 }
 
 .logoname {

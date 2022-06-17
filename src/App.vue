@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="clickFn">
     <router-view
       v-if="loaded"
       id="app"
@@ -25,6 +25,12 @@ export default {
   },
   computed: {
     ...mapState(['loading'])
+  },
+  methods: {
+    clickFn () {
+      console.log(1)
+      this.$bus.$emit('memoCard:close')
+    }
   },
   async created () {
     const types = ['getUserInfo', 'getMsgList']

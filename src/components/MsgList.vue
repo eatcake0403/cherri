@@ -58,7 +58,8 @@ export default {
   padding: 0 20px;
   display: flex;
   align-items: center;
-  color: rgb(77, 77, 77);
+  color: rgb(94, 94, 94);
+  font-weight: 500;
 }
 
 .msgcard {
@@ -72,6 +73,7 @@ export default {
 
   &.active {
     background: $active;
+    box-shadow: 0px 5px 10px 0px rgb(208 207 207 / 35%);
   }
 }
 
